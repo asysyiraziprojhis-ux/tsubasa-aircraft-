@@ -1,0 +1,1200 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Tsubasa Aircraft</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #10213b;
+            background: #f7f9fc;
+            line-height: 1.7;
+        }
+
+        :root {
+            --navy: #10213b;
+            --blue: #203f64;
+            --orange: #ff6900;
+            --gold: #d4af37;
+            --light: #f1f5fa;
+            --gray: #68778b;
+        }
+
+        /* NAVBAR */
+
+        .header {
+            width: 100%;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+        }
+
+        .nav-container {
+            max-width: 1250px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 25px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            display: inline-flex;
+            width: 43px;
+            height: 43px;
+            background: var(--navy);
+            color: var(--orange);
+            justify-content: center;
+            align-items: center;
+            border-radius: 9px;
+            margin-right: 8px;
+        }
+
+        .logo span:last-child {
+            color: var(--orange);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--orange);
+        }
+
+        .contact-btn {
+            padding: 12px 24px;
+            border: 2px solid var(--blue);
+            border-radius: 5px;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--navy);
+            cursor: pointer;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 480px;
+            background:
+                linear-gradient(90deg,
+                rgba(7,20,42,0.83),
+                rgba(7,20,42,0.10)),
+                url('assets/images/about-hero.png');
+
+            background-position: center;
+            background-size: cover;
+
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1250px;
+            width: 100%;
+            padding: 60px 25px;
+            margin: auto;
+        }
+
+        .hero-label {
+            color: #ffb36d;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 65px);
+            line-height: 1.15;
+            margin-bottom: 18px;
+            max-width: 700px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 600px;
+            color: #f0f3f8;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 13px 28px;
+            border-radius: 5px;
+            background: var(--orange);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #d95600;
+            transform: translateY(-3px);
+        }
+
+        /* GENERAL SECTION */
+
+        .section {
+            padding: 80px 25px;
+        }
+
+        .container {
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading span {
+            color: var(--orange);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .section-heading h2 {
+            color: var(--navy);
+            font-size: 34px;
+            margin-top: 8px;
+        }
+
+        .section-heading p {
+            color: var(--gray);
+            max-width: 650px;
+            margin: 10px auto 0;
+        }
+
+        /* ABOUT INTRODUCTION */
+
+        .about-section {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--navy);
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .about-tag {
+            display: inline-block;
+            color: var(--orange);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .about-image {
+            height: 390px;
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* VISION MISSION VALUES */
+
+        .vmv-section {
+            background: #f1f5fa;
+        }
+
+        .vmv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .vmv-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e0e7ef;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            transition: 0.3s;
+        }
+
+        .vmv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+        }
+
+        .vmv-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .vmv-card h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .vmv-card p {
+            color: var(--gray);
+            text-align: justify;
+        }
+
+        /* COMPANY VALUES */
+
+        .values-section {
+            background: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            padding: 28px 20px;
+            border: 1px solid #e0e7ef;
+            border-radius: 10px;
+            text-align: center;
+            background: #ffffff;
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .value-card h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* JAPANESE CULTURE */
+
+        .culture-section {
+            background: var(--navy);
+            color: white;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .culture-image {
+            height: 360px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .culture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .culture-text span {
+            color: #ffad66;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .culture-text h2 {
+            font-size: 34px;
+            margin: 12px 0 18px;
+        }
+
+        .culture-text p {
+            color: #d3dce8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .japanese-quote {
+            margin-top: 25px;
+            padding: 18px;
+            border-left: 4px solid var(--orange);
+            background: rgba(255,255,255,0.07);
+            font-style: italic;
+        }
+
+        /* MISSION POINTS */
+
+        .mission-section {
+            background: #f7f9fc;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .mission-card {
+            background: white;
+            border: 1px solid #e0e7ef;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mission-image {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .mission-content {
+            padding: 24px;
+            flex: 1;
+        }
+
+        .mission-number {
+            display: inline-block;
+            background: var(--navy);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .mission-content h3 {
+            font-size: 20px;
+            line-height: 1.4;
+            min-height: 56px;
+            margin-bottom: 12px;
+        }
+
+        .mission-content p {
+            color: var(--gray);
+            text-align: justify;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* STATISTICS */
+
+        .stats-section {
+            background:
+                linear-gradient(rgba(10,25,50,0.90),
+                rgba(10,25,50,0.90)),
+                url('assets/images/about-hero.png') center/cover;
+            padding: 65px 25px;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            color: #ffad66;
+            font-size: 38px;
+        }
+
+        .stat-item p {
+            color: #e0e7ef;
+        }
+
+        /* CLOSING */
+
+        .closing-section {
+            background: white;
+            padding: 75px 25px;
+            text-align: center;
+        }
+
+        .closing-section h2 {
+            font-size: 32px;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .closing-section p {
+            color: var(--gray);
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .closing-section a {
+            display: inline-block;
+            margin-top: 25px;
+            background: var(--orange);
+            color: white;
+            text-decoration: none;
+            padding: 13px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background: #09172b;
+            color: white;
+            padding: 40px 25px;
+        }
+
+        .footer-content {
+            max-width: 1250px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .footer-logo span {
+            color: var(--orange);
+        }
+
+        .footer p {
+            color: #aebbd0;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+            .nav-menu {
+                gap: 15px;
+            }
+
+            .mission-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding-top: 15px;
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 12px;
+                border-top: 1px solid #edf0f5;
+            }
+
+            .contact-btn {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .hero {
+                min-height: 430px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .about-grid,
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .vmv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 35px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .section {
+                padding: 55px 18px;
+            }
+
+            .section-heading h2 {
+                font-size: 27px;
+            }
+
+            .mission-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-image {
+                height: 220px;
+            }
+
+            .mission-content h3 {
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .culture-text h2 {
+                font-size: 27px;
+            }
+
+            .closing-section h2 {
+                font-size: 26px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="header">
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">翼</span>
+            TSUBASA <span>AIRCRAFT</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle"
+                aria-label="Buka menu">
+            ☰
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="index.html#aircraft">Armada</a>
+            <a href="index.html#cabins">Fasilitas Kabin</a>
+            <a href="index.html#contact" class="contact-btn">
+                Hubungi Kami
+            </a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            TENTANG KAMI
+        </div>
+
+        <h1>
+            Tsubasa Aircraft
+        </h1>
+
+        <p>
+            Menghubungkan Dunia, Mengantarkan Masa Depan.
+            Menghadirkan pengalaman penerbangan berkualitas
+            dengan teknologi modern dan pelayanan terbaik.
+        </p>
+
+        <a href="#about" class="hero-btn">
+            Kenali Perusahaan Kami →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT US -->
+<section class="section about-section" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-text">
+
+            <span class="about-tag">PROFIL PERUSAHAAN</span>
+
+            <h2>
+                Siapa Kami?
+            </h2>
+
+            <p>
+                Tsubasa Aircraft adalah perusahaan penerbangan
+                yang berfokus pada manufaktur, penjualan, dan
+                pengembangan solusi pesawat komersial, kargo,
+                serta penerbangan umum.
+            </p>
+
+            <p>
+                Dengan menggabungkan teknologi penerbangan
+                modern, inovasi berkelanjutan, dan inspirasi
+                budaya Jepang, kami berkomitmen menghadirkan
+                produk serta layanan yang mengutamakan
+                keselamatan, kualitas, dan kenyamanan.
+            </p>
+
+            <p>
+                Kami percaya bahwa setiap perjalanan bukan
+                hanya tentang mencapai tujuan, tetapi juga
+                tentang menciptakan pengalaman yang
+                berkesan bagi setiap pelanggan.
+            </p>
+
+        </div>
+
+        <div class="about-image">
+            <img src="assets/images/about-hero.png"
+                 alt="Kantor pusat Tsubasa Aircraft">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VISION MISSION -->
+<section class="section vmv-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span>ARAH PERUSAHAAN</span>
+            <h2>Visi dan Misi Kami</h2>
+            <p>
+                Prinsip yang menjadi landasan perjalanan
+                Tsubasa Aircraft dalam industri penerbangan.
+            </p>
+        </div>
+
+        <div class="vmv-grid">
+
+            <div class="vmv-card">
+
+                <div class="vmv-icon">✈</div>
+
+                <h3>Visi Kami</h3>
+
+                <p>
+                    Menjadi perusahaan penerbangan
+                    berkelas internasional yang dikenal
+                    atas inovasi, kualitas produk,
+                    keandalan, dan pelayanan terbaik.
+                </p>
+
+            </div>
+
+            <div class="vmv-card">
+
+                <div class="vmv-icon">◎</div>
+
+                <h3>Misi Kami</h3>
+
+                <p>
+                    Mengembangkan solusi penerbangan
+                    modern, menyediakan produk berkualitas,
+                    memperluas konektivitas global, serta
+                    memberikan pengalaman terbaik
+                    kepada setiap pelanggan.
+                </p>
+
+            </div>
+
+            <div class="vmv-card">
+
+                <div class="vmv-icon">◇</div>
+
+                <h3>Tujuan Kami</h3>
+
+                <p>
+                    Membangun masa depan industri
+                    penerbangan melalui teknologi,
+                    profesionalisme, keselamatan,
+                    dan hubungan jangka panjang
+                    dengan pelanggan.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COMPANY VALUES -->
+<section class="section values-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span>IDENTITAS KAMI</span>
+            <h2>Nilai-Nilai Perusahaan</h2>
+            <p>
+                Empat nilai utama yang menjadi dasar
+                setiap langkah Tsubasa Aircraft.
+            </p>
+        </div>
+
+        <div class="values-grid">
+
+            <div class="value-card">
+                <div class="value-icon">🛡️</div>
+                <h3>Keselamatan</h3>
+                <p>
+                    Mengutamakan keselamatan dan
+                    standar kualitas dalam setiap
+                    aspek penerbangan.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">💎</div>
+                <h3>Kualitas</h3>
+                <p>
+                    Menghadirkan produk dan layanan
+                    dengan standar profesional
+                    dan berkualitas tinggi.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">💡</div>
+                <h3>Inovasi</h3>
+                <p>
+                    Terus mengembangkan teknologi
+                    untuk menjawab kebutuhan
+                    penerbangan masa depan.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Kepercayaan</h3>
+                <p>
+                    Membangun hubungan jangka
+                    panjang melalui pelayanan
+                    yang tulus dan profesional.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- JAPANESE CULTURE -->
+<section class="section culture-section">
+
+    <div class="container culture-grid">
+
+        <div class="culture-image">
+            <img src="assets/images/kabin-vip.png"
+                 alt="Interior kabin VIP Tsubasa">
+        </div>
+
+        <div class="culture-text">
+
+            <span>INSPIRASI BUDAYA JEPANG</span>
+
+            <h2>
+                Terinspirasi dari Filosofi Omotenashi
+            </h2>
+
+            <p>
+                Tsubasa Aircraft mengadopsi inspirasi
+                Omotenashi, sebuah filosofi pelayanan
+                Jepang yang menekankan perhatian,
+                ketulusan, dan kepedulian terhadap
+                kebutuhan pelanggan.
+            </p>
+
+            <p>
+                Filosofi ini tercermin dalam konsep
+                pelayanan, desain kabin, perhatian
+                terhadap detail, serta pengalaman
+                perjalanan yang nyaman dan berkesan.
+            </p>
+
+            <div class="japanese-quote">
+                「心を込めたおもてなし」
+                <br>
+                Pelayanan yang diberikan dengan sepenuh hati.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SALES MISSION -->
+<section class="section mission-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span>STRATEGI PERUSAHAAN</span>
+            <h2>Misi Penjualan (Poin Utama)</h2>
+            <p>
+                Strategi kami dalam memperluas pasar
+                dan menghadirkan layanan penerbangan
+                yang kompetitif.
+            </p>
+        </div>
+
+        <div class="mission-grid">
+
+            <!-- 01 -->
+            <div class="mission-card">
+
+                <img class="mission-image"
+                     src="assets/images/pasar-global.png"
+                     alt="Ekspansi pasar global">
+
+                <div class="mission-content">
+
+                    <span class="mission-number">01</span>
+
+                    <h3>Ekspansi Pasar Global</h3>
+
+                    <p>
+                        Membuka rute strategis dunia untuk
+                        mengoptimalkan penjualan dan
+                        memperluas jangkauan operasional
+                        secara internasional.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 02 -->
+            <div class="mission-card">
+
+                <img class="mission-image"
+                     src="assets/images/paket-premium.png"
+                     alt="Paket premium dan eksklusif">
+
+                <div class="mission-content">
+
+                    <span class="mission-number">02</span>
+
+                    <h3>Paket Premium & Eksklusif</h3>
+
+                    <p>
+                        Menawarkan layanan VIP dan fasilitas
+                        premium untuk memenuhi kebutuhan
+                        pelanggan yang mengutamakan
+                        kenyamanan, privasi, dan kemewahan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 03 -->
+            <div class="mission-card">
+
+                <img class="mission-image"
+                     src="assets/images/ekosistem-digital.png"
+                     alt="Ekosistem digital">
+
+                <div class="mission-content">
+
+                    <span class="mission-number">03</span>
+
+                    <h3>Ekosistem Digital</h3>
+
+                    <p>
+                        Mempermudah pembelian tiket
+                        melalui platform digital modern
+                        yang cepat, aman, dan ramah
+                        pengguna.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 04 -->
+            <div class="mission-card">
+
+                <img class="mission-image"
+                     src="assets/images/loyalitas.png"
+                     alt="Penjualan berbasis loyalitas">
+
+                <div class="mission-content">
+
+                    <span class="mission-number">04</span>
+
+                    <h3>Penjualan Berbasis Loyalitas</h3>
+
+                    <p>
+                        Menghadirkan pelayanan tulus
+                        khas Jepang melalui Omotenashi
+                        untuk membangun kepercayaan
+                        dan hubungan jangka panjang.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATISTICS -->
+<section class="stats-section">
+
+    <div class="container stats-grid">
+
+        <div class="stat-item">
+            <h2>50+</h2>
+            <p>Rute Internasional</p>
+        </div>
+
+        <div class="stat-item">
+            <h2>20+</h2>
+            <p>Negara Tujuan</p>
+        </div>
+
+        <div class="stat-item">
+            <h2>1.000+</h2>
+            <p>Staf Profesional</p>
+        </div>
+
+        <div class="stat-item">
+            <h2>100%</h2>
+            <p>Komitmen Keselamatan</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CLOSING -->
+<section class="closing-section">
+
+    <div class="container">
+
+        <h2>
+            Terbang Bersama Tsubasa Aircraft
+        </h2>
+
+        <p>
+            Menghubungkan berbagai tujuan,
+            menghadirkan inovasi, dan memberikan
+            pengalaman penerbangan yang lebih baik
+            untuk masa depan.
+        </p>
+
+        <a href="index.html#aircraft">
+            Jelajahi Armada Kami →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+            <div class="footer-logo">
+                TSUBASA <span>AIRCRAFT</span>
+            </div>
+
+            <p>
+                Menghubungkan Dunia, Mengantarkan Masa Depan.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="index.html#aircraft">Armada</a>
+            <a href="index.html#cabins">Fasilitas Kabin</a>
+        </div>
+
+        <p>
+            © 2026 Tsubasa Aircraft. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    navToggle.addEventListener("click", function() {
+        navMenu.classList.toggle("show");
+    });
+
+    // Menutup menu setelah link diklik
+    document.querySelectorAll(".nav-menu a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            navMenu.classList.remove("show");
+        });
+    });
+
+</script>
+
+</body>
+</html>

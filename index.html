@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tsubasa Aircraft | Premium Aircraft Manufacturing & Sales</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* BADGE HARGA */
+    .price-tag {
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      padding: 6px 14px;
+      background-color: #0b192c;
+      color: #d4af37;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 4px;
+      border: 1px solid #d4af37;
+    }
+
+    /* MODAL */
+    .custom-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.75);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .custom-modal-content {
+      background-color: #ffffff;
+      margin: auto;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      color: #333333;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .custom-close {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .custom-close:hover {
+      color: #000;
+    }
+
+    .custom-modal-content input,
+    .custom-modal-content textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    .custom-modal-content textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* GAMBAR KATALOG */
+    .card-img {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* FILTER KATALOG */
+    .catalog-item.hidden {
+      display: none !important;
+    }
+
+    /* MODAL MOBILE */
+    @media (max-width: 600px) {
+      .custom-modal-content {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="header">
+
+    <div class="container nav-container">
+
+      <a href="index.html" class="logo">
+        <span class="logo-jp">翼</span>
+        TSUBASA <span>AIRCRAFT</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle"
+        aria-label="Toggle navigation">
+        ☰
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+
+        <a href="index.html" class="nav-link active">
+          Home
+        </a>
+
+        <a href="about.html" class="nav-link">
+          About Us
+        </a>
+
+        <a href="#aircraft" class="nav-link">
+          Armada
+        </a>
+
+        <a href="#cabins" class="nav-link">
+          Fasilitas Kabin
+        </a>
+
+        <button type="button"
+          class="btn btn-outline"
+          onclick="bukaModal('General Inquiry')">
+
+          Hubungi Kami
+
+        </button>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+
+      <span class="hero-badge">
+        Omotenashi Excellence
+      </span>
+
+      <h1>
+        Kemewahan & Presisi Penerbangan Global
+      </h1>
+
+      <p>
+        Pilihan utama manufaktur dan penjualan pesawat
+        komersial, kargo, serta penerbangan umum berstandar
+        internasional dengan fasilitas terbaik dunia.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#aircraft" class="btn btn-primary">
+          Jelajahi Armada
+        </a>
+
+        <a href="about.html" class="btn btn-outline-white">
+          Tentang Tsubasa
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- AIRCRAFT CATALOG -->
+  <section class="section catalog" id="aircraft">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>Lini Produk Unggulan</span>
+
+        <h2>Armada Pesawat Tsubasa</h2>
+
+        <p>
+          Solusi penerbangan berkinerja tinggi yang dirancang
+          presisi untuk setiap kebutuhan industri.
+        </p>
+
+      </div>
+
+
+      <!-- CATEGORY FILTER -->
+      <div class="catalog-tabs">
+
+        <button class="tab-btn active"
+          onclick="filterCatalog('all', this)">
+          Semua Kategori
+        </button>
+
+        <button class="tab-btn"
+          onclick="filterCatalog('commercial', this)">
+          Pesawat Komersial
+        </button>
+
+        <button class="tab-btn"
+          onclick="filterCatalog('cargo', this)">
+          Pesawat Kargo
+        </button>
+
+        <button class="tab-btn"
+          onclick="filterCatalog('general', this)">
+          Penerbangan Umum
+        </button>
+
+      </div>
+
+
+      <!-- CATALOG GRID -->
+      <div class="catalog-grid" id="catalogGrid">
+
+
+        <!-- COMMERCIAL AIRCRAFT -->
+        <div class="card catalog-item"
+          data-category="commercial">
+
+          <div class="card-img"
+  style="background-image: url('assets/images/commercial.png');">
+
+            <span class="badge">
+              Komersial
+            </span>
+
+          </div>
+
+          <div class="card-content">
+
+            <h3>Tsubasa C-900 Sovereign</h3>
+
+            <div class="price-tag">
+              Harga: $45 Juta
+            </div>
+
+            <p>
+              Pesawat jet komersial antar-benua berkapasitas
+              besar dengan efisiensi bahan bakar dan kabin
+              senyap berteknologi maju.
+            </p>
+
+            <ul class="specs-list">
+
+              <li>
+                <strong>Jangkauan Jelajah:</strong>
+                13.500 km
+              </li>
+
+              <li>
+                <strong>Kapasitas:</strong>
+                280 - 350 Penumpang
+              </li>
+
+              <li>
+                <strong>Kecepatan Jelajah:</strong>
+                Mach 0.85
+              </li>
+
+            </ul>
+
+            <button class="btn btn-primary full-width"
+              onclick="bukaModal('Tsubasa C-900 Sovereign ($45 Juta)')">
+
+              Minta Penawaran
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- CARGO AIRCRAFT BELUGA -->
+        <div class="card catalog-item"
+          data-category="cargo">
+
+          <div class="card-img"
+            style="background-image: url('assets/images/beluga.jpg');">
+
+            <span class="badge badge-accent">
+              Kargo Beluga
+            </span>
+
+          </div>
+
+          <div class="card-content">
+
+            <h3>Tsubasa K-700 Titan Freight</h3>
+
+            <div class="price-tag">
+              Harga: $30 Juta
+            </div>
+
+            <p>
+              Pesawat kargo super-transporter berdesain
+              Beluga khas dengan kapasitas volume raksasa
+              untuk muatan berat dan alat berat industri.
+            </p>
+
+            <ul class="specs-list">
+
+              <li>
+                <strong>Kapasitas Muatan:</strong>
+                120 Ton
+              </li>
+
+              <li>
+                <strong>Jangkauan Jelajah:</strong>
+                9.500 km
+              </li>
+
+              <li>
+                <strong>Volume Kabin Kargo:</strong>
+                1.500 m³ (Beluga Class)
+              </li>
+
+            </ul>
+
+            <button class="btn btn-primary full-width"
+              onclick="bukaModal('Tsubasa K-700 Titan Freight ($30 Juta)')">
+
+              Minta Penawaran
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- PRIVATE JET -->
+        <div class="card catalog-item"
+          data-category="general">
+
+          <div class="card-img"
+  style="background-image: url('assets/images/private-jet.png');">
+            <span class="badge badge-gold">
+              Private jet
+            </span>
+
+          </div>
+
+          <div class="card-content">
+
+            <h3>Tsubasa G-50 Private Jet</h3>
+
+            <div class="price-tag">
+              Harga: $50 Juta
+            </div>
+
+            <p>
+              Pesawat jet pribadi super-mewah yang
+              menghadirkan fleksibilitas tinggi dan privasi
+              total untuk kenyamanan perjalanan bisnis VIP.
+            </p>
+
+            <ul class="specs-list">
+
+              <li>
+                <strong>Jangkauan Jelajah:</strong>
+                7.800 km
+              </li>
+
+              <li>
+                <strong>Kapasitas:</strong>
+                12 - 16 Penumpang
+              </li>
+
+              <li>
+                <strong>Fasilitas:</strong>
+                Master Suite & Lounge VIP
+              </li>
+
+            </ul>
+
+            <button class="btn btn-primary full-width"
+              onclick="bukaModal('Tsubasa G-50 Private Jet ($50 Juta)')">
+
+              Minta Penawaran
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CABIN SHOWCASE -->
+  <section class="section cabin-section" id="cabins">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>Standar Kualitas Tertinggi</span>
+
+        <h2>Fasilitas Kabin Bertaraf Internasional</h2>
+
+        <p>
+          Setiap jenis pesawat dilengkapi dengan desain
+          interior ergonomis, material eksklusif,
+          dan konsep Omotenashi.
+        </p>
+
+      </div>
+
+
+      <div class="cabin-grid">
+
+
+        <!-- CABIN 1 -->
+        <div class="cabin-card">
+
+          <div class="cabin-img"
+  style="background-image: url('assets/images/kabin-vip.png');">
+</div>
+
+          <div class="cabin-info">
+
+            <h3>Perlengkapan Eksklusif Kabin</h3>
+
+            <p>
+              Fasilitas perawatan dan amenity mewah kelas
+              VVIP yang disiapkan khusus untuk kenyamanan
+              maksimal penumpang selama penerbangan jarak jauh.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- CABIN 2 -->
+        <div class="cabin-card">
+
+          <div class="cabin-img"
+  style="background-image: url('assets/images/beluga-interior.png');">
+</div>
+
+          <div class="cabin-info">
+
+            <h3>Kabin Kargo Beluga Presisi</h3>
+
+            <p>
+              Dilengkapi sistem kontrol suhu multi-zona,
+              stabilitas iklim presisi untuk muatan sensitif,
+              serta efisiensi penanganan muatan otomatis.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- CABIN 3 -->
+        <div class="cabin-card">
+
+          <div class="cabin-img"
+  style="background-image: url('assets/images/omotenashi.png');">
+</div>
+
+          <div class="cabin-info">
+
+            <h3>Kabin Private Jet Omotenashi</h3>
+
+            <p>
+              Kombinasi kerajinan tangan khas Jepang,
+              kustomisasi tata letak eksklusif,
+              konektivitas satelit ultra-cepat,
+              dan ruang konferensi privat.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <div class="container footer-content">
+
+      <div class="footer-brand">
+
+        <a href="index.html" class="logo">
+          <span class="logo-jp">翼</span>
+          TSUBASA <span>AIRCRAFT</span>
+        </a>
+
+        <p>
+          Menghadirkan solusi penerbangan global
+          dengan presisi, inovasi, dan standar
+          pelayanan Omotenashi.
+        </p>
+
+      </div>
+
+      <div class="footer-links">
+
+        <h3>Navigasi</h3>
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="#aircraft">Armada</a>
+        <a href="#cabins">Fasilitas Kabin</a>
+
+      </div>
+
+      <div class="footer-links">
+
+        <h3>Informasi</h3>
+
+        <a href="#aircraft">Pesawat Komersial</a>
+        <a href="#aircraft">Pesawat Kargo</a>
+        <a href="#aircraft">Private Jet</a>
+
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+
+      <p>
+        &copy; 2026 Tsubasa Aircraft.
+        All Rights Reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- CONTACT MODAL -->
+  <div class="custom-modal" id="contactModal">
+
+    <div class="custom-modal-content">
+
+      <span class="custom-close"
+        onclick="tutupModal()">
+        &times;
+      </span>
+
+      <h2>Hubungi Tsubasa Aircraft</h2>
+
+      <p id="modalDescription">
+        Silakan isi informasi berikut untuk menghubungi kami.
+      </p>
+
+      <form id="contactForm">
+
+        <label for="nama">Nama Lengkap</label>
+
+        <input type="text"
+          id="nama"
+          name="nama"
+          placeholder="Masukkan nama Anda"
+          required>
+
+
+        <label for="email">Email</label>
+
+        <input type="email"
+          id="email"
+          name="email"
+          placeholder="Masukkan email Anda"
+          required>
+
+
+        <label for="pesan">Pesan</label>
+
+        <textarea id="pesan"
+          name="pesan"
+          placeholder="Tuliskan pertanyaan atau permintaan penawaran Anda"
+          required></textarea>
+
+
+        <button type="submit"
+          class="btn btn-primary full-width">
+
+          Kirim Pesan
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    // FILTER KATALOG PESAWAT
+    function filterCatalog(category, button) {
+
+      const cards = document.querySelectorAll('.catalog-item');
+
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      button.classList.add('active');
+
+      cards.forEach(card => {
+
+        const cardCategory = card.dataset.category;
+
+        if (category === 'all' || cardCategory === category) {
+
+          card.classList.remove('hidden');
+
+        } else {
+
+          card.classList.add('hidden');
+
+        }
+
+      });
+
+    }
+
+
+
+    // BUKA MODAL
+    function bukaModal(productName) {
+
+      const modal = document.getElementById('contactModal');
+
+      const description = document.getElementById('modalDescription');
+
+      const pesan = document.getElementById('pesan');
+
+      modal.style.display = 'flex';
+
+      description.textContent =
+        'Permintaan informasi untuk: ' + productName;
+
+      pesan.value = 'Saya ingin mengetahui informasi mengenai ' + productName;
+
+    }
+
+
+
+    // TUTUP MODAL
+    function tutupModal() {
+
+      document.getElementById('contactModal').style.display = 'none';
+
+    }
+
+
+
+    // TUTUP MODAL JIKA KLIK DI LUAR KOTAK
+    window.addEventListener('click', function(event) {
+
+      const modal = document.getElementById('contactModal');
+
+      if (event.target === modal) {
+
+        tutupModal();
+
+      }
+
+    });
+
+
+
+    // TUTUP MODAL DENGAN TOMBOL ESC
+    document.addEventListener('keydown', function(event) {
+
+      if (event.key === 'Escape') {
+
+        tutupModal();
+
+      }
+
+    });
+
+
+
+    // NAVIGASI MOBILE
+    const navToggle = document.getElementById('navToggle');
+
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle.addEventListener('click', function() {
+
+      navMenu.classList.toggle('active');
+
+    });
+
+
+
+    // TUTUP MENU SETELAH MEMILIH LINK
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+
+      link.addEventListener('click', function() {
+
+        navMenu.classList.remove('active');
+
+      });
+
+    });
+
+
+
+    // FORM KONTAK
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+
+      event.preventDefault();
+
+      const nama = document.getElementById('nama').value;
+
+      alert(
+        'Terima kasih, ' + nama +
+        '! Pesan Anda sudah diisi. Untuk mengirimkannya, website perlu dihubungkan ke layanan email atau backend.'
+      );
+
+      tutupModal();
+
+      this.reset();
+
+    });
+
+  </script>
+
+</body>
+
+</html>
